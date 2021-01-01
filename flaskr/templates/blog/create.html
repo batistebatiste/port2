@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Position{% endblock %}</h1>
+{% endblock %}
+
+
+
+
+{% block content %}
+  <form method="post">
+    <label for="symbol">Symbol</label>
+    <input name="symbol" id="symbol">{{ request.form['symbol'] }}</input>
+    <label for="eur_amount">Eur amount</label>
+    <input name="eur_amount" id="eur_amount" placeholder="1,000,000.00 €">{{ request.form['eur_amount'] }}</input>
+    <label for="date">Date of opening the position</label>
+    <input type = "date" name="date" id="date" value="{{ request.form['date'] }}"  required>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

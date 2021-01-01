@@ -1,0 +1,39 @@
+
+
+
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Positions{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('blog.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+
+{% block content %}
+<table>
+  <tr>
+    <th>Symbol</th>
+    <th>EUR amount</th>
+    <th>Date transaction</th>
+    <th>Created</th>
+  </tr>
+  {% for pos in positions %}
+    {% if g.user['id'] == pos['author_id'] %}
+        <tr>
+          <th>{{pos['symbol']}}</th>
+          <th>{{pos['eur_amount']}}</th>
+          <th>{{pos['date_position']}}</th>
+          <th>{{pos['created']}}</th>
+          <th> {% if g.user['id'] == pos['author_id'] %}
+            <a class="action" href="{{ url_for('blog.update',id = pos['id'])}}">Edit</a>
+        {% endif %}</th>
+        </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+
+{% endblock %}
+

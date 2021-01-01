@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ position['symbol'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="symbol">Title</label>
+    <input name="symbol" id="symbol" value="{{ request.form['symbol'] or position['symbol'] }}" required>
+    <label for="eur_amount">Eur amount</label>
+    <input name="eur_amount" id="eur_amount" value="{{ request.form['eur_amount'] or position['eur_amount'] }}" required>
+    <label for="date">Date of opening the position</label>
+    <input type = "date" name="date" id="date" value="{{ request.form['date_position'] or position['date_position'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('blog.delete', id=position['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}
+
+
+
+
+
+ 
