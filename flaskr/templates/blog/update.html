@@ -6,13 +6,22 @@
 
 {% block content %}
   <form method="post">
-    <label for="symbol">Title</label>
-    <input name="symbol" id="symbol" value="{{ request.form['symbol'] or position['symbol'] }}" required>
+
+    <label for="symbol">Symbol</label>
+    <input name="symbol" id="input" placeholder="AAPL" value = "{{ request.form['symbol'] }}" required>
+
+    <label for="symbol">Number of Shares</label>
+    <input name="nb_shares" id="input" placeholder="1" value = "{{ request.form['nb_shares'] }}" required>
+
     <label for="eur_amount">Eur amount</label>
-    <input name="eur_amount" id="eur_amount" value="{{ request.form['eur_amount'] or position['eur_amount'] }}" required>
+    <input name="eur_amount" id="input" placeholder="1,000,000.00" value="{{ request.form['eur_amount'] }}">
+
     <label for="date">Date of opening the position</label>
-    <input type = "date" name="date" id="date" value="{{ request.form['date_position'] or position['date_position'] }}" required>
+    <input type = "date" name="date" id="input" value="{{ request.form['date'] }}"  required>
+
     <input type="submit" value="Save">
+    
+
   </form>
   <hr>
   <form action="{{ url_for('blog.delete', id=position['id']) }}" method="post">

@@ -16,12 +16,13 @@ CREATE TABLE positions (
   author_id INTEGER NOT NULL,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   symbol TEXT NOT NULL,
-  eur_amount TEXT NOT NULL,
+  eur_amount TEXT,
+  shares INTEGER, 
   date_position TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
-CREATE TABLE current_prices (
+CREATE TABLE global_quote (
 id INTEGER PRIMARY KEY AUTOINCREMENT, 
 symbol TEXT NOT NULL, 
 price FLOAT(2) NOT NULL,
