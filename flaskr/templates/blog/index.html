@@ -16,6 +16,10 @@
 <table>
   <tr>
     <th>Symbol</th>
+    <th>Current Price</th>
+    <th>DD % change</th>
+    <th>Latest trading day</th>
+    <th>Shares</th>
     <th>EUR amount</th>
     <th>Date transaction</th>
     <th>Created</th>
@@ -24,6 +28,10 @@
     {% if g.user['id'] == pos['author_id'] %}
         <tr>
           <th>{{pos['symbol']}}</th>
+          <th>{{pos['price']}}</th>
+          <th>{{pos['one_day_change_percent']}}</th>
+          <th>{{pos['latest_trading_day']}}</th>
+          <th>{{pos['shares']}}</th>
           <th>{{pos['eur_amount']}}</th>
           <th>{{pos['date_position']}}</th>
           <th>{{pos['created']}}</th>
